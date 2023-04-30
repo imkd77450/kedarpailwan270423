@@ -12,11 +12,14 @@ public interface CustomerRepository extends JpaRepository<Customer,Long> {
 	@Query("select c.firstName,c.lastName,c.mobileNumber from Customer c where c.firstName = ?1 and c.lastName = ?2 and c.mobileNumber=?3")
 	public Customer getCustomer(String firstname,String lastname,String mobilenumber);
 	
-	@Query("select Customer c from Customer c where c.mobileNumber=:mobileNumber")
+	@Query("select c from Customer c where c.mobileNumber=:mobileNumber")
 	public Customer findByMobileNumber(String mobileNumber);
 	
-	@Query("delete Customer c from Customer c where c.mobileno=:mobileno")
+	@Query("delete  c from Customer c where c.mobileno=:mobileno")
 	public Customer deletebyMobileno(String mobileno);
+	
+	@Query("select c from Customer c where c.id = :customerId")
+	public Customer findCustById( Long customerId);
 	
 	
 	

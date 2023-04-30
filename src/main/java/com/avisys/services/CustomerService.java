@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.avisys.cim.Customer;
 import com.avisys.cim.CustomerDummy;
+import com.avisys.cim.MobileNumber;
 import com.avisys.repository.CustomerRepository;
 
 @Service
@@ -14,6 +15,9 @@ public class CustomerService {
      
 	@Autowired
 	CustomerRepository crepo;
+	
+	@Autowired
+	MobileNumberService mservice;
 	
 	public List<Customer> getAllCustomer()
 	{
@@ -48,6 +52,28 @@ public class CustomerService {
 			}
 		 	
 		}
+	 
+	 
+	 
+	 public void addMobileNumber(Long customerId, String mobileNumber) {
+	        
+		 Customer customer = crepo.findCustById(customerId);
+	        
+	        
+	        MobileNumber newMobileNumber = new MobileNumber();
+	        newMobileNumber.setMobileNumber(mobileNumber);
+	        newMobileNumber.setCustomer(customer);
+	        mservice.createMobileNumber(newMobileNumber);
+	        
+	    }
+
+	    public void deleteMobileNumber(Long mobileNumberId)  {
+	       MobileNumber mobileNumber = mservice.getMobileNumberById(mobileNumberId);
+	        
+	        mservice.deleteMobileNumber(mobileNumber);
+	    }
+
+	 
 	 
 	 public Customer deleteCust(String mobileno)
 	 {
