@@ -15,7 +15,8 @@ public interface CustomerRepository extends JpaRepository<Customer,Long> {
 	@Query("select Customer c from Customer c where c.mobileNumber=:mobileNumber")
 	public Customer findByMobileNumber(String mobileNumber);
 	
-	
+	@Query("delete Customer c from Customer c where c.mobileno=:mobileno")
+	public Customer deletebyMobileno(String mobileno);
 	
 	
 	

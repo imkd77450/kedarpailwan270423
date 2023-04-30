@@ -46,14 +46,13 @@ public class CustomerService {
 				Customer cust= new Customer(fname,lname,mnumber);
 				return crepo.save(cust);
 			}
-		 
-		 
-		 
-		 
-		 
-		 
-			
+		 	
 		}
+	 
+	 public Customer deleteCust(String mobileno)
+	 {
+		 return crepo.deletebyMobileno(mobileno);
+	 }
 	 
 	 
 	
